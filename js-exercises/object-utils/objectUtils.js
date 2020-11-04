@@ -23,7 +23,14 @@ function filter(obj, callbackFn) {
 
 function invert(obj) {
   const keyValuePairs = Object.entries(obj);
-  const newKeyValuePairs = keyValuePairs.map(([key, value]) => [value, key]);
+  const newKeyValuePairs = [];
+  for (const keyValuePair of keyValuePairs) {
+    const [key, value] = keyValuePair;
+    const typeofValue = typeof value;
+    if (typeofValue === 'string' || typeofValue === 'number') {
+      newKeyValuePairs.push([value, key]);
+    } else return false;
+  }
   return Object.fromEntries(newKeyValuePairs);
 }
 

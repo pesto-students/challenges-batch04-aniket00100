@@ -50,6 +50,17 @@ describe('Testing invert()', () => {
       value4: 'key4',
     });
   });
+  test('Should return false as value of a key is not a string or a number', () => {
+    const obj = {
+      key1: 'value1',
+      key2: 'value2',
+      key3: [1, 2, 3],
+      key4: 'value4',
+    };
+
+    const returnedValue = invert(obj);
+    expect(returnedValue).toEqual(false);
+  });
 });
 
 describe('Testing merge()', () => {
