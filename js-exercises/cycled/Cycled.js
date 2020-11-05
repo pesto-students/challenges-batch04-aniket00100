@@ -83,7 +83,7 @@
 
 class Cycled {
   constructor(array) {
-    this.array = array;
+    this.array = [...array];
     this.currentIndex = 0;
     this.lengthOfArray = this.array.length;
     Object.defineProperty(this, 'index', {

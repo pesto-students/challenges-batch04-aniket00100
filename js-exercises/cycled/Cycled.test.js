@@ -26,13 +26,13 @@ describe('Cycled', () => {
   });
 
   test('.step()', () => {
-    const c = new Cycled([1, 2, 3]);
+    const c = new Cycled(fixture);
     expect(c.step(2)).toBe(3);
     expect(c.step(-2)).toBe(1);
   });
 
   test('.index', () => {
-    const c = new Cycled([1, 2, 3]);
+    const c = new Cycled(fixture);
     expect(c.index).toBe(0);
     c.index = 2;
     expect(c.index).toBe(2);
@@ -43,24 +43,24 @@ describe('Cycled', () => {
   });
 
   test('.reversed()', () => {
-    const c = new Cycled([1, 2, 3]);
+    const c = new Cycled(fixture);
     expect(c.reversed().next().value).toBe(3);
   });
 
   test('.indexOf()', () => {
-    const c = new Cycled([1, 2, 3]);
+    const c = new Cycled(fixture);
     expect(c.indexOf(3)).toBe(2);
   });
 
   test('iterable', () => {
-    const c = new Cycled([1, 2, 3]);
+    const c = new Cycled(fixture);
     expect(c[Symbol.iterator]().next().value).toBe(1);
   });
 
   test('iterations on destructuring', () => {
-    const c = new Cycled([1, 2, 3]);
-    expect([...c]).toEqual([1, 2, 3]);
-    expect([...c]).toEqual([1, 2, 3]);
+    const c = new Cycled(fixture);
+    expect([...c]).toEqual(fixture);
+    expect([...c]).toEqual(fixture);
     c.next();
     expect([...c]).toEqual([2, 3, 1]);
   });
